@@ -46,10 +46,10 @@ map("n", "<leader>q", ":q<CR>")
 map("n", "<leader>qa", ":qa<CR>")
 
 -- Window navigation
-map("n", "<C-j>", "<C-w>j<C-w>")
-map("n", "<C-h>", "<C-w>h<C-w>")
-map("n", "<C-k>", "<C-w>k<C-w>")
-map("n", "<C-l>", "<C-w>l<C-w>")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 
 -- Hop
 map("n", "HH", ":HopWord<cr>")
@@ -105,25 +105,14 @@ map('n', '<leader>bd', ':bdelete<CR>', {})
 map('n', "<leader>tt", ":SymbolsOutline<CR>");
 
 
--- Vimspector
-vim.cmd([[
-nmap <F5> <cmd>call vimspector#Launch()<cr>
-nmap <F10> <cmd>call vimspector#StepOver()<cr>
-nmap <F6> <cmd>call vimspector#Reset()<cr>
-nmap <F11> <cmd>call vimspector#StepOut()<cr>")
-nmap <F9> <cmd>call vimspector#StepInto()<cr>")
-]])
-map('n', "<F3>", ":call vimspector#ToggleBreakpoint()<cr>")
-map('n', "<F4>", ":call vimspector#AddWatch()<cr>")
-map('n', "<F7>", ":call vimspector#Evaluate()<cr>")
 
 
 -- LSP Navigation
 -- Code Actions
 map('n', "ca", ":lua vim.lsp.buf.code_action()<CR>")
+-- nnoremap <silent> <c-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
 vim.cmd([[
 nnoremap <silent> <c-]>     <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> <c-k>     <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> K         <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gi        <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gc        <cmd>lua vim.lsp.buf.incoming_calls()<CR>
@@ -197,3 +186,28 @@ vim.keymap.set('n', 'cb', '<Plug>(comment_toggle_blockwise_current)')
 -- Toggle in VISUAL mode
 vim.keymap.set('x', 'cc', '<Plug>(comment_toggle_linewise_visual)')
 vim.keymap.set('x', 'cb', '<Plug>(comment_toggle_blockwise_visual)')
+-- debug tools
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<Leader>lp',
+    function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
+    require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
+    require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.scopes)
+end)

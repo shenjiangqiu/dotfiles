@@ -52,7 +52,7 @@ return require('packer').startup(function()
     use 'hrsh7th/cmp-vsnip' -- Snippet completion source for nvim-cmp
     use 'hrsh7th/cmp-path' -- Useful completion sources
     use 'hrsh7th/cmp-buffer' -- Useful completion sources
-    use 'simrat39/rust-tools.nvim' -- rust-analyzer hints and more!
+    use '1024bees/rust-tools.nvim' -- rust-analyzer hints and more!
     use 'saecki/crates.nvim' -- Help managing crates dependencies
     use 'hrsh7th/vim-vsnip' -- Snippet engine
     use 'nvim-lua/popup.nvim' -- Poup for telescope
@@ -60,6 +60,6 @@ return require('packer').startup(function()
     use 'm-demare/hlargs.nvim' -- Highlight argument definitions and usages
     use 'nvim-lua/plenary.nvim' -- Collection of Lua functions
     use 'williamboman/mason.nvim' -- Manage LSPs and DAPs
-    use 'puremourning/vimspector' -- Debugger
     use 'mfussenegger/nvim-dap' -- Debugger
+    use 'mfussenegger/nvim-dap-ui' -- Debugger
 end)

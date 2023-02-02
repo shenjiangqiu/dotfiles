@@ -93,8 +93,7 @@ require("better_escape").setup {
 -- FTerm
 require 'FTerm'.setup({
     border     = 'single',
-    -- cmd = os.getenv('SHELL'),
-    cmd        = 'fish',
+    cmd        = os.getenv('SHELL'),
     blend      = 0,
     dimensions = {
         height = 0.9,
@@ -299,7 +298,9 @@ local nvim_lsp = require 'lspconfig'
 -- RUST
 -- -------------------------------------
 local rt = require("rust-tools")
-
+local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.8.1/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 rt.setup({
     server = {
         on_attach = function(_, bufnr)
@@ -309,6 +310,9 @@ rt.setup({
             vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
         end,
     },
+    dap = {
+        adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+    }
 })
 
 
