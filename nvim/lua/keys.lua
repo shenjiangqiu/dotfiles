@@ -98,6 +98,8 @@ map('n', '<leader>bn', ':bnext<CR>', {})
 map('n', '<leader>bf', ':bfirst<CR>', {})
 map('n', '<leader>bl', ':blast<CR>', {})
 map('n', '<leader>bd', ':bdelete<CR>', {})
+map('n', '<C-z>', ':%bd|e#|bd#<CR>', {})
+map('n', '<C-x>', ':bd<CR>', {})
 
 
 -- Tagbar Toggle
