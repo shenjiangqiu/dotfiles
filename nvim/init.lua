@@ -1,5 +1,4 @@
 --[[ init.lua ]]
-
 -- Impatient for faster loading
 require('impatient')
 
@@ -83,10 +82,10 @@ require("symbols-outline").setup {
 
 -- Better escape
 require("better_escape").setup {
-    mapping = { "jk", "kj" }, -- a table with mappings to use
+    mapping = { "jk", "kj" },   -- a table with mappings to use
     timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
-    clear_empty_lines = false, -- clear line after escaping if there is only whitespace
-    keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
+    clear_empty_lines = false,  -- clear line after escaping if there is only whitespace
+    keys = "<Esc>",             -- keys used for escaping, if it is a function will use the result everytime
 }
 
 
@@ -298,7 +297,7 @@ local nvim_lsp = require 'lspconfig'
 -- RUST
 -- -------------------------------------
 local rt = require("rust-tools")
-local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.8.1/'
+local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.9.0/'
 local codelldb_path = extension_path .. 'adapter/codelldb'
 local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 rt.setup({
@@ -319,7 +318,7 @@ rt.setup({
 
 -- LUA
 -- -------------------------------------
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {
             runtime = {
@@ -415,15 +414,15 @@ cmp.setup({
     },
     -- Installed sources:
     sources = {
-        { name = 'path' }, -- file paths
-        { name = 'nvim_lsp', keyword_length = 1, priority = 10 }, -- from language server
-        { name = 'crates', keyword_length = 1, priority = 10 },
-        { name = 'luasnip', keyword_length = 1, priority = 7 }, -- for lua users
-        { name = 'nvim_lsp_signature_help', priority = 8 }, -- display function signatures with current parameter emphasized
-        { name = 'nvim_lua', keyword_length = 1, priority = 8 }, -- complete neovim's Lua runtime API such vim.lsp.*
-        { name = 'buffer', keyword_length = 1, priority = 5 }, -- source current buffer
+        { name = 'path' },                                                       -- file paths
+        { name = 'nvim_lsp',                keyword_length = 1, priority = 10 }, -- from language server
+        { name = 'crates',                  keyword_length = 1, priority = 10 },
+        { name = 'luasnip',                 keyword_length = 1, priority = 7 },  -- for lua users
+        { name = 'nvim_lsp_signature_help', priority = 8 },                      -- display function signatures with current parameter emphasized
+        { name = 'nvim_lua',                keyword_length = 1, priority = 8 },  -- complete neovim's Lua runtime API such vim.lsp.*
+        { name = 'buffer',                  keyword_length = 1, priority = 5 },  -- source current buffer
         -- { name = 'vsnip', keyword_length = 2 },         -- nvim-cmp source for vim-vsnip
-        { name = 'calc' }, -- source for math calculation
+        { name = 'calc' },                                                       -- source for math calculation
     },
     window = {
         completion = {
@@ -432,13 +431,12 @@ cmp.setup({
             side_padding = 1,
         },
         documentation = cmp.config.window.bordered(),
-
     },
     formatting = {
         fields = { 'menu', 'abbr', 'kind' },
         format = lspkind.cmp_format({
             mode = 'symbol_text', -- show only symbol annotations
-            maxwidth = 60, -- prevent the popup from showing more than provided characters
+            maxwidth = 60,        -- prevent the popup from showing more than provided characters
             -- The function below will be called before any actual modifications from lspkind:
             before = function(entry, vim_item)
                 local menu_icon = {
@@ -451,7 +449,6 @@ cmp.setup({
                 return vim_item
             end,
         })
-
     },
     preselect = cmp.PreselectMode.None,
     confirmation = {
@@ -486,7 +483,8 @@ cmp.setup.cmdline(':', {
 
 require('nvim-treesitter.configs').setup {
     ensure_installed = { "bash", "c", "cmake", "css", "dockerfile", "go", "gomod", "gowork", "hcl", "help", "html",
-        "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim", "yaml",
+        "http", "javascript", "json", "lua", "make", "markdown", "python", "regex", "ruby", "rust", "toml", "vim",
+        "yaml",
         "zig" },
     auto_install = true,
     highlight = {
@@ -495,8 +493,8 @@ require('nvim-treesitter.configs').setup {
     incremental_selection = {
         enable = true,
         keymaps = {
-            init_selection = "<S-Tab>", -- normal mode
-            node_incremental = "<Tab>", -- visual mode
+            init_selection = "<S-Tab>",  -- normal mode
+            node_incremental = "<Tab>",  -- visual mode
             node_decremental = "<S-Tab", -- visual mode
         },
     },
@@ -560,7 +558,6 @@ end
 -- global handler
 require('ufo').setup({
     fold_virt_text_handler = handler,
-
     provider_selector = function(bufnr, filetype, buftype)
         return { 'treesitter', 'indent' }
     end
