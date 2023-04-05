@@ -1,5 +1,14 @@
 --[[ plug.lua ]]
 return require('packer').startup(function()
+    use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+})
     use "rebelot/kanagawa.nvim"
     use { 'junegunn/fzf', run = ":call fzf#install()" }
     use { 'junegunn/fzf.vim' }
