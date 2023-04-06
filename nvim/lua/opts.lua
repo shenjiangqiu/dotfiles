@@ -21,7 +21,12 @@ set spelllang=en_us
 vim.cmd([[
 map q <Nop>
 ]])
+vim.cmd([[
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+]]
 
+)
 opt.number = true -- bool: Show line numbers
 opt.relativenumber = true -- bool: Show relative line numbers
 opt.scrolloff = 4 -- int:  Min num lines of context

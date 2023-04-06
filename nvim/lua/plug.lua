@@ -1,14 +1,15 @@
 --[[ plug.lua ]]
 return require('packer').startup(function()
     use({
-    "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
-})
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    })
+    use "github/copilot.vim"
     use "rebelot/kanagawa.nvim"
     use { 'junegunn/fzf', run = ":call fzf#install()" }
     use { 'junegunn/fzf.vim' }
@@ -22,9 +23,9 @@ return require('packer').startup(function()
     use 'williamboman/mason-lspconfig.nvim'                                  -- closes gaps with mason
     use 'tanvirtin/monokai.nvim'                                             -- Color scheme
     use { 'kyazdani42/nvim-tree.lua',                                        -- Filesystem navigation
-        requires = 'kyazdani42/nvim-web-devicons' }                          -- Filesystem icons
+    requires = 'kyazdani42/nvim-web-devicons' }                          -- Filesystem icons
     use { 'nvim-lualine/lualine.nvim',                                       -- Statusline
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true } }
     use {
         "windwp/nvim-autopairs", -- Autocomplete (), {}, []
         config = function() require("nvim-autopairs").setup {} end

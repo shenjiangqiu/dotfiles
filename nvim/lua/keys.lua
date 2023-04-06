@@ -55,7 +55,7 @@ map("n", "<leader>=","<C-w>+")
 map("n", "<leader>,","<C-w><")
 map("n", "<leader>.","<C-w>>")
 map("n","<C-n>","$a;<CR>")
-map("i","<C-n>","<ECS>$a;<CR>")
+map("i","<C-n>","<Esc>$a;<CR>")
 -- Hop
 map("n", "HH", ":HopWord<cr>")
 map("n", "HF", ":HopPattern<cr>")
