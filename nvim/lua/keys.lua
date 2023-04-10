@@ -90,6 +90,7 @@ map("n", "<leader>e", ":TroubleToggle<cr>")
 
 -- Nvim Tree
 map("n", "<leader>nt", ":NvimTreeToggle<CR>")
+map("n", "<leader>nf", ":NvimTreeFindFile<CR>")
 
 -- Transparency
 map("n", "<leader>\\", ":TransparentToggle<CR>")
