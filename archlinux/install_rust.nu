@@ -2,7 +2,8 @@ export def main [] {
     use std log info
     if (which rustup | is-empty) {
         info "ERROR cargp and rustup are required to install rust"
-        exit 1
+        use ../tools
+        tools install_if_not_exists rustup
     } else {
         info "Rustup is already installed"
     }

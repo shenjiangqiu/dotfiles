@@ -1,7 +1,10 @@
 
+use ../tools
 export def main [] {
+    tools assert_nushell_init
+
     use std log info
-    
+
     info "starting nushell init"
     use setup_nushell.nu
     setup_nushell
@@ -15,6 +18,5 @@ export def main [] {
     } else {
         info "nu_scripts already installed"
     }
-    use ../tools
     tools append_if_not_exists "source ~/.nu_scripts/custom-completions/git/git-completions.nu" $nu.config-path
 }

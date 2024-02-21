@@ -1,4 +1,12 @@
 use std log info
+
+# assert that nushell is initialized
+export def assert_nushell_init [] {
+    use std assert
+    assert ($nu.config-path | path exists) "run nu first to init the config"
+    assert ($nu.env-path | path exists) "run nu first to init the config"
+}
+
 # install the commands using paru if not exists
 # - note: only works if the package name is same as the command name
 export def install_if_not_exists [ 

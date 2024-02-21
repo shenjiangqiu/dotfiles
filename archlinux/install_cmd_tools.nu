@@ -6,7 +6,8 @@ export def main [] {
     install_paru
     # install others
     use ../tools
-    tools install_if_not_exists fd ripgrep bat exa zoxide starship bat zoxide skim bottom procs dust tokei hyperfine rustup
+    tools install_if_not_exists fd ripgrep git bat exa zoxide starship bat zoxide skim bottom procs dust tokei hyperfine rustup
+    
     use install_rust.nu
     install_rust
 }

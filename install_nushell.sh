@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Install nushell
-paru -S --needed nushell
+sudo pacman -S --needed nushell
