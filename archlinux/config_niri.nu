@@ -40,8 +40,6 @@ export def main [] {
     cp ./niri/code-flags.conf ~/.config/
 
     let vscode_config_path = "~/.config/Code/User/settings.json"
-
-
     let config = {
         "window.titleBarStyle": "custom",
         "git.autofetch": true,
@@ -50,14 +48,14 @@ export def main [] {
         "editor.fontFamily": "'JetBrainsMono Nerd Font','Droid Sans Mono', 'monospace', monospace",
         "editor.fontLigatures": true,
     }
-
     # update vscode config to use correct fonts
     if ($vscode_config_path | path exists) and ( open $vscode_config_path | describe | $in =~ record ) {
         echo "vscode config exists, update the settings"
-        let vscode = open $vscode_config_path
-        $config|transpose key value| 
-                reduce --fold $vscode   { |it, acc| ( $acc|upsert $it.key $it.value ) } |
-                save -f ./test2.json
+        mut vscode = open $vscode_config_path
+        for item in ($config | transpose key value) {
+            echo $"updating key: ($item.key) : ($item.value)"
+            $vscode = ($vscode | upsert $item.key $item.value)
+        }
     } else {
         # the file not exists
         touch $vscode_config_path
