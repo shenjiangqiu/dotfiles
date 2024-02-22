@@ -2,6 +2,7 @@
 # install the service for niri
 export def main [] {
     # create the folders 
+    echo "cp the services"
     mkdir ~/.config/systemd/user/niri.service.wants/
     # create swaybg.service
     cp ./niri/services/*.service ~/.config/systemd/user/
@@ -14,23 +15,53 @@ export def main [] {
     ln -sf /usr/lib/systemd/user/waybar.service ~/.config/systemd/user/niri.service.wants/
 
     # setup the configures,there files are only used by niri
+    echo "setting up alacritty"
     mkdir ~/.config/alacritty
     cp ./niri/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
     # setup the configures for waybar
+    echo "setting up waybar"
     mkdir ~/.config/waybar
     cp ./niri/waybar/config ~/.config/waybar/config
 
     # setup the niri config
+    echo "setting up niri"
     mkdir ~/.config/niri
     cp ./niri/niri/config.kdl ~/.config/niri/config.kdl
 
     # cp the bg
+    echo "cp 1.png as wallpaper"
     cp ./niri/1.png ~/Pictures/
 
     echo "the default bg is ~/Pictures/1.png. change it at ~/.config/systemd/user/swaybg.service"
 
     # setup vscode
+    echo "cp code flags for vscode wayland launch"
     cp ./niri/code-flags.conf ~/.config/
+
+    let vscode_config_path = "~/.config/Code/User/settings.json"
+
+
+    let config = {
+        "window.titleBarStyle": "custom",
+        "git.autofetch": true,
+        "git.confirmSync": false,
+        "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font','Droid Sans Mono', 'monospace', monospace",
+        "editor.fontFamily": "'JetBrainsMono Nerd Font','Droid Sans Mono', 'monospace', monospace",
+        "editor.fontLigatures": true,
+    }
+
+    # update vscode config to use correct fonts
+    if ($vscode_config_path | path exists) and ( open $vscode_config_path | describe | $in =~ record ) {
+        echo "vscode config exists, update the settings"
+        let vscode = open $vscode_config_path
+        $config|transpose key value| 
+                reduce --fold $vscode   { |it, acc| ( $acc|upsert $it.key $it.value ) } |
+                save -f ./test2.json
+    } else {
+        # the file not exists
+        touch $vscode_config_path
+        $config | to json |save -f $vscode_config_path
+    }
 
 }
