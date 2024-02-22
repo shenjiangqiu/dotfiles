@@ -47,6 +47,8 @@ export def main [] {
         "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font','Droid Sans Mono', 'monospace', monospace",
         "editor.fontFamily": "'JetBrainsMono Nerd Font','Droid Sans Mono', 'monospace', monospace",
         "editor.fontLigatures": true,
+        "files.autoSave": "afterDelay",
+
     }
     # update vscode config to use correct fonts
     if ($vscode_config_path | path exists) and ( open $vscode_config_path | describe | $in =~ record ) {
@@ -56,6 +58,7 @@ export def main [] {
             echo $"updating key: ($item.key) : ($item.value)"
             $vscode = ($vscode | upsert $item.key $item.value)
         }
+        $vscode | to json | save -f $vscode_config_path
     } else {
         # the file not exists
         touch $vscode_config_path
