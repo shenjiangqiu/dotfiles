@@ -12,6 +12,7 @@ export def main [] {
     use config_niri.nu
     config_niri
 
+ 
 
 
     echo "config down, try to start sddm to see niri configured"

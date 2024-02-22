@@ -1,0 +1,1 @@
+run `nu setup.nu`

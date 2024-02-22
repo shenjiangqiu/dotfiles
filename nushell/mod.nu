@@ -6,8 +6,10 @@ export def main [] {
     use std log info
 
     info "starting nushell init"
-    use setup_nushell.nu
-    setup_nushell
+    use setup_zoxide.nu
+    setup_zoxide
+
+    # setup nu_scripts
     paru -S --needed git
     info "install tools from nu_scripts"
     if  (not ("~/.nu_scripts"|path exists)) {
@@ -18,5 +20,17 @@ export def main [] {
     } else {
         info "nu_scripts already installed"
     }
-    tools append_if_not_exists "source ~/.nu_scripts/custom-completions/git/git-completions.nu" $nu.config-path
+
+
+
+
+    # add the nushell alias
+    echo "setting up alias"
+    use setup_alias.nu
+    setup_alias
+
+    # setup completions
+    echo "setting up completions"
+    use setup_completion.nu
+    setup_completion
 }

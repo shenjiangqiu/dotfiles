@@ -12,7 +12,8 @@ export def main [] {
         niri-bin gnome-tweaks ttf-jetbrains-mono-nerd otf-font-awesome polkit-gnome
         xdg-desktop-portal-gtk swayidle mako waybar swaybg kde-applications network-manager-applet
         helix fuzzel gnome-keyring swaylock rsync ntp sddm docker
-        alacritty visual-studio-code-bin
+        alacritty visual-studio-code-bin openresolv wireguard-tools eza
+        carapace-bin
     ]
     tools install_if_not_exists ...$tools
 
