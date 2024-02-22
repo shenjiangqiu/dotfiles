@@ -1,5 +1,5 @@
 [window]
-decorations = "none"
+decorations = "full"
 opacity = 0.9
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular"}
