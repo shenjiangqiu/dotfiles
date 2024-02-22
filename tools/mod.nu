@@ -1,4 +1,4 @@
-use std log info
+use std log debug
 
 # assert that nushell is initialized
 export def assert_nushell_init [] {
@@ -13,13 +13,13 @@ export def install_if_not_exists [
     ...commands : string # the commands to install
  ] {
     if ( which paru | is-empty ) {
-        info $"paru not found, please install paru first"
+        debug $"paru not found, please install paru first"
         use ../archlinux/install_paru.nu
         install_paru
     }
 
-    info $"will install ($commands)"
-    paru -S --needed ...$commands
+    debug $"will install ($commands)"
+    paru -S --needed -q ...$commands
 }
 
 # append the content to the file if not exists
@@ -32,12 +32,12 @@ export def append_if_not_exists [
         
 
     if ( rg -F -- $content $file | is-empty) {
-        info $"content ($content) does not exist in ($file),appending..."
+        debug $"content ($content) does not exist in ($file),appending..."
         ("\n" + $content) | save --append $file
-        info "saved (prepended with newline)"
+        debug "saved (prepended with newline)"
     } else {
-        use std log info
-        info $"content ($content) already exists in ($file)"
+        use std log debug
+        debug $"content ($content) already exists in ($file)"
     }
 }
 #[test]

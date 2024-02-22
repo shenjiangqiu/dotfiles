@@ -10,7 +10,7 @@ export def main [] {
     setup_zoxide
 
     # setup nu_scripts
-    paru -S --needed git
+    paru -S -q --needed git
     info "install tools from nu_scripts"
     if  (not ("~/.nu_scripts"|path exists)) {
         info "requires nu_scripts to be installed"

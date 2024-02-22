@@ -27,7 +27,7 @@ export def main [] {
         ttf-arphic-ukai
         ttf-arphic-uming
     ]
-    paru -S --needed ...$chinese_fonts
+    paru -S -q --needed ...$chinese_fonts
 
     echo "config down, try to start sddm to see niri configured"
 }
