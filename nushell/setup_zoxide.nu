@@ -9,7 +9,7 @@ export def main [] {
     }
     # intall zoxide and setup zoxide
     use ../tools
-    tools install_if_not_exists zoxide sd
+    tools install_if_not_exists zoxide sd git
     if not ("~/.zoxide.nu"|path exists) {
         zoxide init nushell |save -f ~/.zoxide.nu
         # fix the file: change def-env to def --env

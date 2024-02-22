@@ -1,0 +1,1 @@
+docker run -it --rm -v .:/home/nushell/dotfiles test_docker 

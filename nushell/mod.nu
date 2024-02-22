@@ -8,7 +8,7 @@ export def main [] {
     info "starting nushell init"
     use setup_nushell.nu
     setup_nushell
-
+    paru -S --needed git
     info "install tools from nu_scripts"
     if  (not ("~/.nu_scripts"|path exists)) {
         info "requires nu_scripts to be installed"
