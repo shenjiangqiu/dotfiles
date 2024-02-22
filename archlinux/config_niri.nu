@@ -15,7 +15,7 @@ export def main [] {
 
     # setup the configures,there files are only used by niri
     mkdir ~/.config/alacritty
-    cp ./niri/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+    cp ./niri/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
     # setup the configures for waybar
     mkdir ~/.config/waybar
@@ -29,6 +29,8 @@ export def main [] {
     cp ./niri/1.png ~/Pictures/
 
     echo "the default bg is ~/Pictures/1.png. change it at ~/.config/systemd/user/swaybg.service"
-    
+
+    # setup vscode
+    cp ./niri/code-flags.conf ~/.config/
 
 }
