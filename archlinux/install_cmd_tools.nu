@@ -13,7 +13,7 @@ export def main [] {
         xdg-desktop-portal-gtk swayidle mako waybar swaybg kde-applications network-manager-applet
         helix fuzzel gnome-keyring swaylock rsync ntp sddm docker
         alacritty visual-studio-code-bin openresolv wireguard-tools eza
-        carapace-bin
+        carapace-bin sd
     ]
     tools install_if_not_exists ...$tools
 
