@@ -29,9 +29,15 @@ export def main [] {
     mkdir ~/.config/niri
     cp ./niri/niri/config.kdl ~/.config/niri/config.kdl
 
+
     # cp the bg
     echo "cp 1.png as wallpaper"
     cp ./niri/1.png ~/Pictures/
+
+    # setup swaylock
+    echo "cp swaylock config"
+    mkdir ~/.config/swaylock
+    cp ./niri/swaylock/config ~/.config/swaylock/config
 
     echo "the default bg is ~/Pictures/1.png. change it at ~/.config/systemd/user/swaybg.service"
 
