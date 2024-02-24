@@ -43,7 +43,8 @@ export def main [] {
 
     # setup vscode
     echo "cp code flags for vscode wayland launch"
-    cp ./niri/code-flags.conf ~/.config/
+    cp ./niri/code-flags.conf ~/.config/code-flags.conf
+    cp ./niri/code-flags.conf ~/.config/electron28-flags.conf
 
     let vscode_config_path = "~/.config/Code/User/settings.json"
     let config = {
@@ -70,5 +71,7 @@ export def main [] {
         touch $vscode_config_path
         $config | to json |save -f $vscode_config_path
     }
+
+ 
 
 }
