@@ -296,8 +296,36 @@ window-rule {
     // match app-id=r#"^org\.wezfurlong\.wezterm$"#
     // default-column-width {}
 
-    match app-id=r#"alacritty"#
+    match app-id=r#"Alacritty"#
     default-column-width { proportion 0.5; }
+    // match app-id=r#"code"#
+    // default-column-width { proportion 1.0; }
+
+}
+window-rule {
+    // This regular expression is intentionally made as specific as possible,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    // The regular expression can match anywhere in the string.
+    // match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    // default-column-width {}
+
+    match app-id=r#"code"#
+    default-column-width { proportion 1.0; }
+    // match app-id=r#"code"#
+    // default-column-width { proportion 1.0; }
+
+}
+window-rule {
+    // This regular expression is intentionally made as specific as possible,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    // The regular expression can match anywhere in the string.
+    // match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    // default-column-width {}
+
+    match app-id=r#"firefox"#
+    default-column-width { proportion 1.0; }
     // match app-id=r#"code"#
     // default-column-width { proportion 1.0; }
 
