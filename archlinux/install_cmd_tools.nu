@@ -4,6 +4,16 @@ export def main [] {
     # install the paru first
     use install_paru.nu
     install_paru
+    use std log info
+    # enable multilib in pacman
+    if  (rg  '^\[multilib\]' /etc/pacman.conf | is-empty) {
+        info "enabling multilib"
+        let multilib_string = "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist"
+        $multilib_string | sudo tee -a /etc/pacman.conf
+    } else {
+        info "multilib already enabled"
+    }
+
     # install others
     use ../tools
     let tools = [
