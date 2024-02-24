@@ -3,11 +3,10 @@
 export def main [] {
     # enable ntp
     sudo systemctl enable --now ntpd
-
     # enable sddm
     sudo systemctl enable sddm
     sudo systemctl enable --now NetworkManager
-
+    sudo systemctl enable --now cronie
     # setup niri
     use config_niri.nu
     config_niri

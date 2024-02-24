@@ -24,6 +24,7 @@ export def main [] {
         helix fuzzel gnome-keyring swaylock rsync ntp sddm docker
         alacritty visual-studio-code-bin openresolv wireguard-tools eza
         carapace-bin sd just docker-compose zellij tealdeer bandwhich kondo
+        cronie
     ]
     tools install_if_not_exists ...$tools
 
