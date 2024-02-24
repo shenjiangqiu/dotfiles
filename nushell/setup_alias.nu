@@ -6,7 +6,7 @@ export def main [] {
     append_if_not_exists "export alias p = paru" $nu.config-path
     append_if_not_exists "export alias pn = paru -q --needed -S" $nu.config-path
     append_if_not_exists "export alias pss = paru -Ss -q" $nu.config-path
-
+    append_if_not_exists "export alias hx = helix" $nu.config-path
 
     append_if_not_exists "use ~/.nu_scripts/aliases/bat/bat-aliases.nu *" $nu.config-path
     append_if_not_exists "use ~/.nu_scripts/aliases/exa/exa-aliases.nu *" $nu.config-path
