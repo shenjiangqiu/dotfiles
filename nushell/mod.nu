@@ -25,12 +25,19 @@ export def main [] {
 
 
     # add the nushell alias
-    echo "setting up alias"
+    info "setting up alias"
     use setup_alias.nu
     setup_alias
 
     # setup completions
-    echo "setting up completions"
+    info "setting up completions"
     use setup_completion.nu
     setup_completion
+
+    # set custom commands
+    info "setting up custom commands"
+    cp ./nushell/.tools.nu ~/.tools.nu
+    use ../tools *
+    append_if_not_exists "source ~/.tools.nu" $nu.config-path
+
 }
