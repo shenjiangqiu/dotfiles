@@ -34,7 +34,10 @@ export def main [] {
 
     # cp the bg
     echo "cp 1.png as wallpaper"
-    cp ./niri/1.png ~/Pictures/
+    # copy all the wallpapers
+    use std log info
+    use ../tools filter_image
+    ls ./niri | where ($it |filter_image) | each { |in| (info $"copying ($in.name) to ~/Pictures" ;cp $in.name ~/Pictures/;) }
 
     # setup swaylock
     echo "cp swaylock config"

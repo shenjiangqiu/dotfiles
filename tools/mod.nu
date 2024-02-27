@@ -40,6 +40,10 @@ export def append_if_not_exists [
         debug $"content ($content) already exists in ($file)"
     }
 }
+
+export def filter_image [] {
+    ($in.name | path parse | get extension ) =~ "(jpg)|(png)$"
+}
 #[test]
 def test [] {
     install_if_not_exists bat fd
