@@ -5,14 +5,7 @@ export def main [] {
     use install_paru.nu
     install_paru
     use std log info
-    # enable multilib in pacman
-    if  (rg  '^\[multilib\]' /etc/pacman.conf | is-empty) {
-        info "enabling multilib"
-        let multilib_string = "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist"
-        $multilib_string | sudo tee -a /etc/pacman.conf
-    } else {
-        info "multilib already enabled"
-    }
+    
 
     # install others
     use ../tools
@@ -26,7 +19,17 @@ export def main [] {
         carapace-bin sd just docker-compose zellij tealdeer bandwhich kondo
         cronie
     ]
+    paru -Syy
     tools install_if_not_exists ...$tools
+
+    # enable multilib in pacman
+    if  (rg  '^\[multilib\]' /etc/pacman.conf | is-empty) {
+        info "enabling multilib"
+        let multilib_string = "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist"
+        $multilib_string | sudo tee -a /etc/pacman.conf
+    } else {
+        info "multilib already enabled"
+    }
 
     use install_rust.nu
     install_rust

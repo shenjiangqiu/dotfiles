@@ -2,6 +2,8 @@
 # install the service for niri
 export def main [] {
     # create the folders 
+    mkdir ~/.config
+    mkdir ~/Pictures
     echo "cp the services"
     mkdir ~/.config/systemd/user/niri.service.wants/
     # create swaybg.service
@@ -45,8 +47,8 @@ export def main [] {
     echo "cp code flags for vscode wayland launch"
     cp ./niri/code-flags.conf ~/.config/code-flags.conf
     cp ./niri/code-flags.conf ~/.config/electron28-flags.conf
-
-    let vscode_config_path = "~/.config/Code/User/settings.json"
+    mkdir ~/.config/Code/User/
+    let vscode_config_path = ("~/.config/Code/User/settings.json"| path expand)
     let config = {
         "window.titleBarStyle": "custom",
         "git.autofetch": true,
