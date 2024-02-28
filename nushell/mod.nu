@@ -1,7 +1,9 @@
 
 use ../tools
 export def main [] {
-    tools assert_nushell_init
+    # tools assert_nushell_init
+    cp ./nushell/.env.nu $nu.env-path
+    cp ./nushell/.config.nu $nu.config-path
 
     use std log info
 

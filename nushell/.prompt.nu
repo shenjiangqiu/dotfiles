@@ -1,0 +1,1 @@
+let host_name = (sys).host.hostname
