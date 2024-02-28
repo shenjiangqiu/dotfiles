@@ -60,7 +60,6 @@ export def main [] {
         "editor.fontFamily": "'JetBrainsMono Nerd Font','Droid Sans Mono', 'monospace', monospace",
         "editor.fontLigatures": true,
         "files.autoSave": "afterDelay",
-
     }
     # update vscode config to use correct fonts
     if ($vscode_config_path | path exists) and ( open $vscode_config_path | describe | $in =~ record ) {
